@@ -7,7 +7,12 @@ import MyProduct from './components/MyProduct';
 export const dynamic = "force-dynamic";
 
 export default async function page() {
-    const res=await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/productsUser`,{
+
+  const baseUrl =
+    process.env.NODE_ENV === 'production'
+      ? process.env.NEXT_PUBLIC_SITE_URL
+      : 'http://localhost:3000';
+    const res=await fetch(`${baseUrl}/api/productsUser`,{
          headers:new Headers(await headers()) ,
     })
    const data=await res.json()

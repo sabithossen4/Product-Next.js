@@ -38,8 +38,12 @@ export default function ProductForm() {
       username: session?.user?.name,
       email: session?.user?.email,
     };
+     const baseUrl =
+    process.env.NODE_ENV === 'production'
+      ? process.env.NEXT_PUBLIC_SITE_URL
+      : 'http://localhost:3000';
 
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`, {
+    const response = await fetch(`${baseUrl}/api/products`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),

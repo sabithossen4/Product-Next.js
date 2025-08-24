@@ -2,7 +2,11 @@ import React from "react";
 
 export default async function ProductDetailsPage({ params }) {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`, { cache: "no-store" });
+    const baseUrl =
+    process.env.NODE_ENV === 'production'
+      ? process.env.NEXT_PUBLIC_SITE_URL
+      : 'http://localhost:3000';
+    const res = await fetch(`${baseUrl}/api/products`, { cache: "no-store" });
 
     const product = await res.json();
 

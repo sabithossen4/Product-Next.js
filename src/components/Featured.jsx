@@ -1,8 +1,15 @@
 import ProductCard from '@/app/products/Components/ProductCard'
 import React from 'react'
+
 export const dynamic = "force-dynamic";
+
 export default async function Featured() {
-    const res=await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/featured`)
+
+    const baseUrl =
+    process.env.NODE_ENV === 'production'
+      ? process.env.NEXT_PUBLIC_SITE_URL
+      : 'http://localhost:3000';
+    const res=await fetch(`${baseUrl}/api/featured`)
    const data=await res.json()
    
   return (

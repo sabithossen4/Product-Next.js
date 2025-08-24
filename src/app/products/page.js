@@ -6,11 +6,13 @@ import React from "react";
 export const dynamic= "force-dynamic";
 
 export default async function ProductsPage() {
+  const baseUrl =
+    process.env.NODE_ENV === 'production'
+      ? process.env.NEXT_PUBLIC_SITE_URL
+      : 'http://localhost:3000';
   
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`);
-    const products = await res.json();
-
-  
+    const res = await fetch(`${baseUrl}/api/products`);
+    const products = await res.json();  
 
     return (
       <div className="p-6 max-w-4xl mx-auto">
