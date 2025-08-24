@@ -39,7 +39,7 @@ export default function ProductForm() {
       email: session?.user?.email,
     };
 
-    const response = await fetch("/api/products", {
+    const response = await fetch('/api/products', {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
