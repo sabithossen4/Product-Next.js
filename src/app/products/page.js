@@ -2,12 +2,15 @@
 import Link from "next/link";
 import React from "react";
 
+
+export const dynamic= "force-dynamic";
+
 export default async function ProductsPage() {
   try {
-    const res = await fetch('/api/products', {
-      cache: "no-store", // 
-    });
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`);
     const products = await res.json();
+
+  
 
     return (
       <div className="p-6 max-w-4xl mx-auto">
