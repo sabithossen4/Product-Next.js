@@ -4,7 +4,7 @@ import React from "react";
 
 export default async function ProductsPage() {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`, {
+    const res = await fetch('/api/products', {
       cache: "no-store", // 
     });
     const products = await res.json();
