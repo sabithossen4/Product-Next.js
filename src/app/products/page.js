@@ -6,7 +6,7 @@ import React from "react";
 export const dynamic= "force-dynamic";
 
 export default async function ProductsPage() {
-  try {
+  
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products`);
     const products = await res.json();
 
@@ -25,7 +25,7 @@ export default async function ProductsPage() {
               <p className="mb-2">{product.description}</p>
               <p className="font-bold text-green-600 mb-2">${product.price}</p>
               <Link href={`/products/${product._id}`} className="text-blue-500 hover:underline">
-      View Details
+      View Details.
     </Link>
             </div>
             
@@ -34,11 +34,5 @@ export default async function ProductsPage() {
         </div>
       </div>
     );
-  } catch (error) {
-    return (
-      <div className="p-6 text-red-600">
-        Failed to load products: {error.message}
-      </div>
-    );
-  }
+  
 }
