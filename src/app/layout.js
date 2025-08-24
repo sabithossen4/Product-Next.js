@@ -1,5 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { Toaster } from "react-hot-toast";
+import NextAuthProvider from "@/Providers/NextAuthProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,8 +26,23 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <NextAuthProvider>
+          
+          <div className="shadow-sm bg-base-100 ">
+          <Navbar/>
+        </div>
+        <Toaster/>
+        <div className=' min-h-[calc(100vh-243px)] '>
+          {/* mt-16 */}
+             {children}
+        </div>       
+        <div>
+          <Footer/>
+          {/* // fixed top-0 left-0 w-full z-50 */}
+        </div>
+        </NextAuthProvider>
       </body>
     </html>
   );
 }
+
